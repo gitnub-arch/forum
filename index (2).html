@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Форумдун программасы — Кыргыз Республикасынын жашыл энергетикасы</title>
+<style>
+  :root {
+    --green: #1f7a4d;
+    --green-dark: #135235;
+    --green-light: #e8f5ee;
+    --text: #1d2b24;
+    --muted: #5d6b63;
+    --line: #d6e3da;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+  header {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    text-align: center;
+    padding: 56px 0 48px;
+  }
+  .ministry {
+    font-size: 13px;
+    letter-spacing: .03em;
+    opacity: .9;
+    margin: 0 0 22px;
+  }
+  .program-label {
+    font-size: 15px;
+    letter-spacing: .08em;
+    margin: 0 0 8px;
+    opacity: .9;
+  }
+  header h1 {
+    font-size: clamp(22px, 4vw, 32px);
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: -28px;
+  }
+  .info div {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(19,82,53,.08);
+  }
+  .info h3 {
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: .04em;
+    margin: 0 0 8px;
+  }
+  .info p { margin: 0; font-size: 15px; }
+
+  section { padding: 40px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    font-size: 22px;
+    color: var(--green-dark);
+    margin: 0 0 16px;
+  }
+  .goal {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin: 0;
+  }
+
+  .day {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin: 32px 0 10px;
+  }
+  .moderator {
+    font-size: 15px;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  tr { border-bottom: 1px solid var(--line); }
+  td { padding: 12px 8px; vertical-align: top; font-size: 15px; }
+  td.time {
+    width: 130px;
+    font-weight: 600;
+    color: var(--green-dark);
+    white-space: nowrap;
+  }
+  tr.muted td { color: var(--muted); }
+  tr.highlight td { color: var(--green-dark); font-weight: 600; background: var(--green-light); }
+
+  footer {
+    background: var(--green-dark);
+    color: #fff;
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .info { grid-template-columns: 1fr; margin-top: 0; }
+    header { padding: 40px 0 32px; }
+    tr { display: block; padding: 8px 0; }
+    td { display: block; padding: 2px 0; }
+    td.time { width: auto; padding-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="ministry">КЫРГЫЗ РЕСПУБЛИКАСЫНЫН ИЛИМ, ЖОГОРКУ БИЛИМ БЕРҮҮ ЖАНА ИННОВАЦИЯЛАР МИНИСТРЛИГИ</p>
+    <p class="program-label">ФОРУМДУН ПРОГРАММАСЫ</p>
+    <h1>«Кыргыз Республикасынын жашыл энергетикасы: илимди, инновацияларды жана инвестицияларды өнүктүрүү»</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="info">
+    <div>
+      <h3>ӨТКӨРҮЛҮҮЧҮ КҮНҮ ЖАНА УБАКТЫСЫ</h3>
+      <p>2026-жылдын 10-ноябры, саат 10:00дөн 14:00гө чейин</p>
+    </div>
+    <div>
+      <h3>ӨТКӨРҮЛҮҮЧҮ ЖЕРИ</h3>
+      <p>Бишкек шаары, Чүй проспектиси, 346, «ROX Centre» бизнес борбору</p>
+    </div>
+    <div>
+      <h3>ИШ-ЧАРАЛАРДЫН КАЛЕНДАРЫ</h3>
+      <p>форумдун салтанаттуу ачылышы; панелдик сессия; InnovTech 2026 көргөзмөсү.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>ФОРУМДУН МАКСАТЫ ЖАНА МИЛДЕТТЕРИ</h2>
+    <p class="goal">Кыргыз Республикасынын экономикасынын жогорку технологиялуу тармактары үчүн жашыл энергетиканы өнүктүрүүгө, инновациялык технологияларды киргизүүгө, алдыңкы технологиялык чечимдерди көрсөтүүгө, студенттик стартаптарды жана инновациялык долбоорлорду колдоого, инвестицияларды тартууга жана эл аралык кызматташтыкты кеңейтүүгө, ошондой эле кадрдык потенциалды өнүктүрүүгө багытталган илим, билим берүү, бизнес, мамлекеттик органдар, инвесторлор жана стартап-коомчулуктун өкүлдөрүн бириктирген натыйжалуу аянтча түзүү.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="day">10-ноябрь</span>
+
+    <table>
+      <tr class="muted"><td class="time">09:00 – 10:00</td><td>Форумдун катышуучуларын каттоо жана жайгаштыруу, InnovTech 2026 көргөзмөсү, баарлашуу кофеси</td></tr>
+    </table>
+    <p class="moderator"><strong>Модератор: Сулайманова Лира Сулаймановна</strong>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министринин орун басары</p>
+
+    <table>
+      <tr><td class="time">10:00 – 10:05</td><td><strong>Расмий бөлүктүн ачылышы</strong></td></tr>
+      <tr><td class="time">10:05 – 10:10</td><td><strong>Кыргыз Республикасынын Мамлекеттик гимнин аткаруу</strong></td></tr>
+      <tr><td class="time">10:10 – 10:15</td><td><strong>Видеоролик көрсөтүү</strong></td></tr>
+      <tr><td class="time">10:15 – 10:20</td><td><strong>Куттуктоо сөзү:</strong> <strong>Исаматова Гульзат Тыныбековна</strong>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министри</td></tr>
+      <tr><td class="time">10:20 – 10:25</td><td><strong>Рысбеков Алтынбек Дурусбекович</strong>, Кыргыз Республикасынын энергетика министри</td></tr>
+      <tr><td class="time">10:25 – 10:30</td><td><strong>Бикулов Дамирбек Жантураевич,</strong> Кыргыз Республикасынын Президентине караштуу инвестициялар боюнча улуттук агенттиктин башчысынын орун басары</td></tr>
+      <tr><td class="time">10:30 – 10:35</td><td><strong>Мураталиев Кубанычбек Баймбетович</strong>, «Рокс Энерджи Борбордук Азия» ЖЧКнын директору</td></tr>
+      <tr><td class="time">10:35 – 10:50</td><td><strong>Сыйлоо аземи:</strong> Кыргыз Республикасынын жаш окумуштуулары жана инноваторлор конкурсунун жеңүүчүлөрүн сыйлоо. <strong>Исаматова Гульзат Тыныбековна</strong>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министри</td></tr>
+      <tr class="muted"><td class="time">10:50 – 11:00</td><td><strong>Жалпы сүрөткө түшүү</strong></td></tr>
+    </table>
+
+    <div class="subtitle">ПАНЕЛДИК СЕССИЯ</div>
+    <p class="moderator"><strong>Модератор: Жабудаев Турукмен Жусупбекович</strong>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министрлигинин Илим башкармалыгынын начальниги</p>
+
+    <table>
+      <tr><td class="time">11:00 – 11:10</td><td><strong>Бердалиев Бакытбек Нурланович</strong>, Кыргыз Республикасынын Министрлер Кабинетине караштуу «Жашыл энергетика фонду» мамлекеттик мекемесинин директорунун орун басары Темасы: «Энергиянын калыптанма булактары жаатындагы долбоорлорду ишке ашырууга шарттарды түзүүдөгү Жашыл энергетика фондунун ролу»</td></tr>
+      <tr><td class="time">11:10 – 11:20</td><td><strong>Кырбашева Кундус Бергеншаевна,</strong> Кыргыз Республикасынын кайра жаралуучу энергия булактарынын жашыл электр станциялары ассоциациясынын башкармалыгынын төрайымы Темасы: «Кыргызстандын жашыл энергетикасы: инновациялардан энергетикалык көз карандысыздыкка карай»</td></tr>
+      <tr><td class="time">11:20 – 11:30</td><td><strong>Кадыракунов Акылбек Жолдошбекович</strong>, «Venergy» ЖЧКнын башкы директорунун орун басары Темасы: «Күн энергетикасындагы инновациялык технологиялар: идеядан ишке ашырууга чейин»</td></tr>
+      <tr><td class="time">11:30 – 11:50</td><td><strong>Чатоева Ася</strong>, «Борбордук Азиядагы жашыл экономика үчүн жашыл көндүмдөр» долбоорунун кеңешчиси Темасы: «Кыргыз Республикасында жашыл экономиканы өнүктүрүүдө жашыл көндүмдөрдүн ролу» <strong>Шарипов Аскат</strong>, Улуттук координатор, энергетика боюнча кеңешчиси Темасы: «Чатырга орнотулуучу күн электр станцияларын сатып алуунун бириктирилген ыкмасы»</td></tr>
+      <tr><td class="time">11:50 – 12:00</td><td><strong>Молдокматова Назгуль Омургазыевна</strong>, «ФинАкыл» ЖЧКнын башкы директору Темасы: Жашыл экономика: эмне үчүн экологиялык жактан жоопкерчиликтүү бизнес келечектин бизнесине айланууда?</td></tr>
+      <tr><td class="time">12:00 – 12:10</td><td><strong>Бровко Наталья Анатольевна</strong>, Б. Ельцин атындагы Кыргыз-Россия Славян университетинин экономика илимдеринин доктору, профессор, Илимий-инновациялык башкармалыктын башчысы Темасы: «Жашыл экономика жана келечектин энергетикасы үчүн кадрларды даярдоо»</td></tr>
+      <tr><td class="time">12:10 – 12:20</td><td><strong>Имантуров Азамат Климович</strong>, «Поли Технолоджи» ЖЧКнын долбоорлор боюнча жетекчиси Темасы: «И. Раззаков атындагы Кыргыз мамлекеттик техникалык университетинин алдындагы Энергиянын натыйжалуулугу технологиялары борбору: илимден жашыл энергетикага инвестицияларга чейин»</td></tr>
+      <tr><td class="time">12:20 – 12:40</td><td>Royal Central Park презентациясы <strong>Баймуратов Болот</strong>, ROX Group</td></tr>
+      <tr><td class="time">12:40 – 12:50</td><td><strong>Кызматташтык жөнүндө меморандумдарга кол коюу</strong></td></tr>
+      <tr><td class="time">12:50 – 13:00</td><td>Форумдун ишин аяктоо</td></tr>
+      <tr class="highlight"><td class="time">13:00 – 14:00</td><td><strong>«InnovTech 2026» инновациялык технологиялар көргөзмөсү.</strong> <strong>Фуршет.</strong> «Мөлтүр» ансамблинин музыкалык коштоосунда</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  Bishkek – 2026 ж.
+</footer>
+
+</body>
+</html>
