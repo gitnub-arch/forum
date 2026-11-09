@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Форумдун программасы — Кыргыз Республикасынын жашыл энергетикасы</title>
+<style>
+  :root {
+    --g1: #0f5a3a;
+    --g2: #1f7a4d;
+    --g3: #3fae78;
+    --mint: #e8f5ee;
+    --ink: #13261c;
+    --muted: #5d6b63;
+    --line: #d6e3da;
+    --card: rgba(255,255,255,.85);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: #f6faf7;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(10px);
+    background: rgba(246,250,247,.8);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  nav .logo { font-weight: 700; color: var(--g1); font-size: 15px; }
+  nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+  nav a { color: var(--ink); text-decoration: none; font-size: 14px; opacity: .75; transition: opacity .2s; }
+  nav a:hover { opacity: 1; color: var(--g2); }
+
+  /* Hero */
+  header.hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    padding: 80px 0 90px;
+    background: linear-gradient(-45deg, var(--g1), var(--g2), #2b9a66, var(--g1));
+    background-size: 300% 300%;
+    animation: gradient 14s ease infinite;
+  }
+  @keyframes gradient {
+    0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+  }
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(60px); opacity: .35;
+    background: var(--g3); animation: float 10s ease-in-out infinite;
+  }
+  .blob.b1 { width: 320px; height: 320px; left: -80px; top: -60px; }
+  .blob.b2 { width: 260px; height: 260px; right: -60px; bottom: -80px; animation-delay: -4s; }
+  @keyframes float {
+    0%,100%{ transform: translate(0,0) } 50%{ transform: translate(30px,-20px) }
+  }
+  .hero .ministry {
+    position: relative;
+    font-size: 12px; letter-spacing: .08em; opacity: .9; margin: 0 0 22px;
+  }
+  .hero .label {
+    position: relative;
+    font-size: 14px; letter-spacing: .25em; margin: 0 0 10px; opacity: .85;
+  }
+  .hero h1 {
+    position: relative;
+    font-size: clamp(24px, 4.4vw, 40px);
+    line-height: 1.3; margin: 0 auto; max-width: 780px; font-weight: 700;
+  }
+
+  /* Countdown */
+  .countdown {
+    position: relative;
+    display: inline-flex; gap: 12px; margin-top: 36px;
+  }
+  .countdown div {
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 14px; padding: 12px 14px; min-width: 76px;
+    backdrop-filter: blur(6px);
+  }
+  .countdown b { display: block; font-size: 26px; font-variant-numeric: tabular-nums; }
+  .countdown span { font-size: 11px; letter-spacing: .1em; opacity: .85; }
+
+  /* Info cards */
+  .info {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-top: -46px; position: relative; z-index: 2;
+  }
+  .card {
+    background: var(--card);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 14px 34px rgba(19,82,53,.10);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(19,82,53,.16); }
+  .card .ico {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--mint); color: var(--g2); font-size: 18px; margin-bottom: 12px;
+  }
+  .card h3 { font-size: 12px; color: var(--g2); letter-spacing: .06em; margin: 0 0 8px; }
+  .card p { margin: 0; font-size: 15px; }
+
+  section { padding: 64px 0; }
+  h2 {
+    font-size: 24px; color: var(--g1); margin: 0 0 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before {
+    content: ""; width: 6px; height: 26px; border-radius: 3px;
+    background: linear-gradient(var(--g3), var(--g1));
+  }
+  .goal {
+    background: linear-gradient(135deg, #fff, var(--mint));
+    border: 1px solid var(--line);
+    border-radius: 18px; padding: 26px 28px; margin: 0;
+    font-size: 17px; box-shadow: 0 10px 30px rgba(19,82,53,.06);
+  }
+
+  /* Timeline */
+  .day-pill {
+    display: inline-block; background: var(--g2); color: #fff;
+    padding: 8px 18px; border-radius: 999px; font-weight: 600; margin-bottom: 26px;
+    box-shadow: 0 8px 18px rgba(31,122,77,.3);
+  }
+  .sub {
+    font-size: 18px; font-weight: 700; color: var(--g1);
+    margin: 44px 0 6px; letter-spacing: .02em;
+  }
+  .mod {
+    font-size: 15px; color: var(--muted); margin: 0 0 18px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px; padding: 12px 16px;
+  }
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+    background: linear-gradient(var(--g3), var(--line));
+  }
+  .item {
+    position: relative;
+    display: grid; grid-template-columns: 118px 1fr; gap: 16px;
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 16px; margin-bottom: 12px;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease, box-shadow .3s;
+  }
+  .item.in { opacity: 1; transform: none; }
+  .item:hover { box-shadow: 0 10px 24px rgba(19,82,53,.10); }
+  .item::before {
+    content: ""; position: absolute; left: -23px; top: 22px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--g2); border: 3px solid #f6faf7;
+  }
+  .item .time { font-weight: 700; color: var(--g1); font-variant-numeric: tabular-nums; font-size: 15px; }
+  .item.muted { background: #f3f7f4; }
+  .item.muted .time, .item.muted .txt { color: var(--muted); }
+  .item.highlight {
+    background: linear-gradient(135deg, var(--g2), var(--g1)); color: #fff; border: none;
+  }
+  .item.highlight .time, .item.highlight .txt { color: #fff; }
+  .item.highlight::before { background: #fff; }
+
+  .people { display: flex; gap: 10px; align-items: flex-start; }
+  .txt { font-size: 15px; }
+  .txt b { color: var(--g1); }
+  .item.highlight .txt b { color: #fff; }
+
+  /* Avatars: photo if photos/<file> exists, otherwise initials */
+  .av {
+    flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--g3), var(--g1));
+    color: #fff; display: grid; place-items: center;
+    font-weight: 700; font-size: 14px; overflow: hidden;
+    box-shadow: 0 4px 10px rgba(19,82,53,.25);
+    border: 2px solid #fff;
+  }
+  .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .people .txt { flex: 1; }
+
+  .place {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px;
+  }
+  .place h3 { margin: 0 0 4px; color: var(--g1); }
+  .place p { margin: 0; color: var(--muted); }
+  .place a {
+    background: var(--g2); color: #fff; text-decoration: none; padding: 12px 20px;
+    border-radius: 12px; font-weight: 600; font-size: 15px; transition: background .2s;
+  }
+  .place a:hover { background: var(--g1); }
+
+  footer {
+    background: linear-gradient(135deg, var(--g1), #0a3f29);
+    color: #fff; text-align: center; padding: 30px 16px; font-size: 14px;
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 720px) {
+    nav ul { display: none; }
+    header.hero { padding: 56px 0 80px; }
+    .info { grid-template-columns: 1fr; margin-top: -30px; }
+    .item { grid-template-columns: 1fr; gap: 6px; }
+    .timeline { padding-left: 22px; }
+    .item::before { left: -20px; }
+    .countdown div { min-width: 62px; padding: 10px; }
+    .countdown b { font-size: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .item, .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Жашыл энергетика · 2026</div>
+    <ul>
+      <li><a href="#maksat">Максат</a></li>
+      <li><a href="#programma">Программа</a></li>
+      <li><a href="#koordinat">Жери</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap">
+    <p class="ministry">КЫРГЫЗ РЕСПУБЛИКАСЫНЫН ИЛИМ, ЖОГОРКУ БИЛИМ БЕРҮҮ ЖАНА ИННОВАЦИЯЛАР МИНИСТРЛИГИ</p>
+    <p class="label">ФОРУМДУН ПРОГРАММАСЫ</p>
+    <h1>«Кыргыз Республикасынын жашыл энергетикасы: илимди, инновацияларды жана инвестицияларды өнүктүрүү»</h1>
+    <div class="countdown" id="countdown">
+      <div><b id="cd-d">--</b><span>КҮН</span></div>
+      <div><b id="cd-h">--</b><span>СААТ</span></div>
+      <div><b id="cd-m">--</b><span>МҮНӨТ</span></div>
+      <div><b id="cd-s">--</b><span>СЕКУНД</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="info">
+    <div class="card reveal">
+      <div class="ico">◷</div>
+      <h3>ӨТКӨРҮЛҮҮЧҮ КҮНҮ ЖАНА УБАКТЫСЫ</h3>
+      <p>2026-жылдын 10-ноябры, саат 10:00дөн 14:00гө чейин</p>
+    </div>
+    <div class="card reveal">
+      <div class="ico">⌖</div>
+      <h3>ӨТКӨРҮЛҮҮЧҮ ЖЕРИ</h3>
+      <p>Бишкек шаары, Чүй проспектиси, 346, «ROX Centre» бизнес борбору</p>
+    </div>
+    <div class="card reveal">
+      <div class="ico">✦</div>
+      <h3>ИШ-ЧАРАЛАРДЫН КАЛЕНДАРЫ</h3>
+      <p>форумдун салтанаттуу ачылышы; панелдик сессия; InnovTech 2026 көргөзмөсү.</p>
+    </div>
+  </div>
+</div>
+
+<section id="maksat">
+  <div class="wrap">
+    <h2 class="reveal">ФОРУМДУН МАКСАТЫ ЖАНА МИЛДЕТТЕРИ</h2>
+    <p class="goal reveal">Кыргыз Республикасынын экономикасынын жогорку технологиялуу тармактары үчүн жашыл энергетиканы өнүктүрүүгө, инновациялык технологияларды киргизүүгө, алдыңкы технологиялык чечимдерди көрсөтүүгө, студенттик стартаптарды жана инновациялык долбоорлорду колдоого, инвестицияларды тартууга жана эл аралык кызматташтыкты кеңейтүүгө, ошондой эле кадрдык потенциалды өнүктүрүүгө багытталган илим, билим берүү, бизнес, мамлекеттик органдар, инвесторлор жана стартап-коомчулуктун өкүлдөрүн бириктирген натыйжалуу аянтча түзүү.</p>
+  </div>
+</section>
+
+<section id="programma" style="padding-top:20px;">
+  <div class="wrap">
+    <span class="day-pill reveal">10-ноябрь</span>
+
+    <div class="timeline">
+      <div class="item muted"><div class="time">09:00 – 10:00</div><div class="txt">Форумдун катышуучуларын каттоо жана жайгаштыруу, InnovTech 2026 көргөзмөсү, баарлашуу кофеси</div></div>
+    </div>
+    <div class="mod"><b>Модератор: Сулайманова Лира Сулаймановна</b>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министринин орун басары</div>
+
+    <div class="timeline">
+      <div class="item"><div class="time">10:00 – 10:05</div><div class="txt"><b>Расмий бөлүктүн ачылышы</b></div></div>
+      <div class="item"><div class="time">10:05 – 10:10</div><div class="txt"><b>Кыргыз Республикасынын Мамлекеттик гимнин аткаруу</b></div></div>
+      <div class="item"><div class="time">10:10 – 10:15</div><div class="txt"><b>Видеоролик көрсөтүү</b></div></div>
+      <div class="item">
+        <div class="time">10:15 – 10:20</div>
+        <div class="people">
+          <div class="av" data-photo="photos/isamatova.jpg" data-init="ИГ"><span>ИГ</span></div>
+          <div class="txt"><b>Куттуктоо сөзү:</b> <b>Исаматова Гульзат Тыныбековна</b>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министри</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">10:20 – 10:25</div>
+        <div class="people">
+          <div class="av" data-photo="photos/rysbekov.jpg" data-init="РА"><span>РА</span></div>
+          <div class="txt"><b>Рысбеков Алтынбек Дурусбекович</b>, Кыргыз Республикасынын энергетика министри</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">10:25 – 10:30</div>
+        <div class="people">
+          <div class="av" data-photo="photos/bikulov.jpg" data-init="БД"><span>БД</span></div>
+          <div class="txt"><b>Бикулов Дамирбек Жантураевич,</b> Кыргыз Республикасынын Президентине караштуу инвестициялар боюнча улуттук агенттиктин башчысынын орун басары</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">10:30 – 10:35</div>
+        <div class="people">
+          <div class="av" data-photo="photos/murataliev.jpg" data-init="МК"><span>МК</span></div>
+          <div class="txt"><b>Мураталиев Кубанычбек Баймбетович</b>, «Рокс Энерджи Борбордук Азия» ЖЧКнын директору</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">10:35 – 10:50</div>
+        <div class="people">
+          <div class="av" data-photo="photos/isamatova.jpg" data-init="ИГ"><span>ИГ</span></div>
+          <div class="txt"><b>Сыйлоо аземи:</b> Кыргыз Республикасынын жаш окумуштуулары жана инноваторлор конкурсунун жеңүүчүлөрүн сыйлоо. <b>Исаматова Гульзат Тыныбековна</b>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министри</div>
+        </div>
+      </div>
+      <div class="item muted"><div class="time">10:50 – 11:00</div><div class="txt"><b>Жалпы сүрөткө түшүү</b></div></div>
+    </div>
+
+    <div class="sub">ПАНЕЛДИК СЕССИЯ</div>
+    <div class="mod"><b>Модератор: Жабудаев Турукмен Жусупбекович</b>, Кыргыз Республикасынын илим, жогорку билим берүү жана инновациялар министрлигинин Илим башкармалыгынын начальниги</div>
+
+    <div class="timeline">
+      <div class="item">
+        <div class="time">11:00 – 11:10</div>
+        <div class="people">
+          <div class="av" data-photo="photos/berdaliev.jpg" data-init="ББ"><span>ББ</span></div>
+          <div class="txt"><b>Бердалиев Бакытбек Нурланович</b>, Кыргыз Республикасынын Министрлер Кабинетине караштуу «Жашыл энергетика фонду» мамлекеттик мекемесинин директорунун орун басары Темасы: «Энергиянын калыптанма булактары жаатындагы долбоорлорду ишке ашырууга шарттарды түзүүдөгү Жашыл энергетика фондунун ролу»</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">11:10 – 11:20</div>
+        <div class="people">
+          <div class="av" data-photo="photos/kyrbasheva.jpg" data-init="КК"><span>КК</span></div>
+          <div class="txt"><b>Кырбашева Кундус Бергеншаевна,</b> Кыргыз Республикасынын кайра жаралуучу энергия булактарынын жашыл электр станциялары ассоциациясынын башкармалыгынын төрайымы Темасы: «Кыргызстандын жашыл энергетикасы: инновациялардан энергетикалык көз карандысыздыкка карай»</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">11:20 – 11:30</div>
+        <div class="people">
+          <div class="av" data-photo="photos/kadyrakunov.jpg" data-init="КА"><span>КА</span></div>
+          <div class="txt"><b>Кадыракунов Акылбек Жолдошбекович</b>, «Venergy» ЖЧКнын башкы директорунун орун басары Темасы: «Күн энергетикасындагы инновациялык технологиялар: идеядан ишке ашырууга чейин»</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">11:30 – 11:50</div>
+        <div class="people">
+          <div class="av" data-photo="photos/chatoeva.jpg" data-init="ЧА"><span>ЧА</span></div>
+          <div class="txt"><b>Чатоева Ася</b>, «Борбордук Азиядагы жашыл экономика үчүн жашыл көндүмдөр» долбоорунун кеңешчиси Темасы: «Кыргыз Республикасында жашыл экономиканы өнүктүрүүдө жашыл көндүмдөрдүн ролу» <b>Шарипов Аскат</b>, Улуттук координатор, энергетика боюнча кеңешчиси Темасы: «Чатырга орнотулуучу күн электр станцияларын сатып алуунун бириктирилген ыкмасы»</div>
+          <div class="av" data-photo="photos/sharipov.jpg" data-init="ША"><span>ША</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">11:50 – 12:00</div>
+        <div class="people">
+          <div class="av" data-photo="photos/moldokmatova.jpg" data-init="МН"><span>МН</span></div>
+          <div class="txt"><b>Молдокматова Назгуль Омургазыевна</b>, «ФинАкыл» ЖЧКнын башкы директору Темасы: Жашыл экономика: эмне үчүн экологиялык жактан жоопкерчиликтүү бизнес келечектин бизнесине айланууда?</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">12:00 – 12:10</div>
+        <div class="people">
+          <div class="av" data-photo="photos/brovko.jpg" data-init="БН"><span>БН</span></div>
+          <div class="txt"><b>Бровко Наталья Анатольевна</b>, Б. Ельцин атындагы Кыргыз-Россия Славян университетинин экономика илимдеринин доктору, профессор, Илимий-инновациялык башкармалыктын башчысы Темасы: «Жашыл экономика жана келечектин энергетикасы үчүн кадрларды даярдоо»</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">12:10 – 12:20</div>
+        <div class="people">
+          <div class="av" data-photo="photos/imanturov.jpg" data-init="ИА"><span>ИА</span></div>
+          <div class="txt"><b>Имантуров Азамат Климович</b>, «Поли Технолоджи» ЖЧКнын долбоорлор боюнча жетекчиси Темасы: «И. Раззаков атындагы Кыргыз мамлекеттик техникалык университетинин алдындагы Энергиянын натыйжалуулугу технологиялары борбору: илимден жашыл энергетикага инвестицияларга чейин»</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">12:20 – 12:40</div>
+        <div class="people">
+          <div class="av" data-photo="photos/baimuratov.jpg" data-init="ББ"><span>ББ</span></div>
+          <div class="txt">Royal Central Park презентациясы <b>Баймуратов Болот</b>, ROX Group</div>
+        </div>
+      </div>
+      <div class="item"><div class="time">12:40 – 12:50</div><div class="txt"><b>Кызматташтык жөнүндө меморандумдарга кол коюу</b></div></div>
+      <div class="item"><div class="time">12:50 – 13:00</div><div class="txt">Форумдун ишин аяктоо</div></div>
+      <div class="item highlight"><div class="time">13:00 – 14:00</div><div class="txt"><b>«InnovTech 2026» инновациялык технологиялар көргөзмөсү.</b> <b>Фуршет.</b> «Мөлтүр» ансамблинин музыкалык коштоосунда</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="koordinat" style="padding-top:20px;">
+  <div class="wrap">
+    <h2 class="reveal">ӨТКӨРҮЛҮҮЧҮ ЖЕРИ</h2>
+    <div class="place reveal">
+      <div>
+        <h3>«ROX Centre» бизнес борбору</h3>
+        <p>Бишкек шаары, Чүй проспектиси, 346</p>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Bishkek+Chuy+346+ROX+Centre" target="_blank" rel="noopener">Картадан ачуу</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Bishkek – 2026 ж.
+</footer>
+
+<script>
+  // Countdown to 10 November 2026, 10:00 Bishkek time (UTC+6)
+  (function () {
+    var target = new Date("2026-11-10T10:00:00+06:00").getTime();
+    var d = document.getElementById("cd-d"), h = document.getElementById("cd-h"),
+        m = document.getElementById("cd-m"), s = document.getElementById("cd-s");
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) { d.textContent = h.textContent = m.textContent = s.textContent = "0"; return; }
+      var pad = function (n) { return String(n).padStart(2, "0"); };
+      d.textContent = Math.floor(diff / 86400000);
+      h.textContent = pad(Math.floor(diff / 3600000) % 24);
+      m.textContent = pad(Math.floor(diff / 60000) % 60);
+      s.textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  // Avatars: try photos/<file>, fall back to initials
+  document.querySelectorAll(".av[data-photo]").forEach(function (el) {
+    var img = new Image();
+    img.alt = "";
+    img.onload = function () { el.innerHTML = ""; el.appendChild(img); };
+    img.src = el.getAttribute("data-photo");
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal, .item").forEach(function (el) { io.observe(el); });
+</script>
+
+</body>
+</html>
